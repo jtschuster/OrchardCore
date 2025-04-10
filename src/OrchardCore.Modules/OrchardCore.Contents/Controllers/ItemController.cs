@@ -26,7 +26,7 @@ public sealed class ItemController : Controller, IUpdateModel
 
     public async Task<IActionResult> Display(string contentItemId, string jsonPath)
     {
-        s_cache.Add(new byte[1024 * 1024 * 2]);
+        s_cache.Add(new byte[1024*10]);
         var contentItem = await _contentManager.GetAsync(contentItemId, jsonPath);
 
         if (contentItem == null)
