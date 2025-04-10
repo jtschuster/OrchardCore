@@ -12,7 +12,7 @@ public sealed class ItemController : Controller, IUpdateModel
     private readonly IContentItemDisplayManager _contentItemDisplayManager;
     private readonly IAuthorizationService _authorizationService;
 
-    private static readonly List<byte[]> s_cache = new List<byte[]>(128);
+    private static readonly List<ContentItem[]> s_cache = new List<ContentItem[]>(128);
 
     public ItemController(
         IContentManager contentManager,
@@ -26,7 +26,7 @@ public sealed class ItemController : Controller, IUpdateModel
 
     public async Task<IActionResult> Display(string contentItemId, string jsonPath)
     {
-        s_cache.Add(new byte[1024*10]);
+        s_cache.Add(new ContentItem[1024*256]);
         var contentItem = await _contentManager.GetAsync(contentItemId, jsonPath);
 
         if (contentItem == null)
