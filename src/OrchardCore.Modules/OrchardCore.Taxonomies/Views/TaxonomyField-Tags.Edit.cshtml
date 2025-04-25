@@ -59,12 +59,12 @@
                                 :disabled="isDisabled"
                                 track-by="contentItemId"
                                 label="displayText"
-                                @@select="onSelect"
-                                @@remove="onRemove"
+                                v-on:select="onSelect"
+                                v-on:remove="onRemove"
                                 :taggable="@open.ToString().ToLower()"
                                 tag-position="bottom"
                                 tag-placeholder="@T["Press enter to create a tag"]"
-                                @@tag="createTagTerm">
+                                v-on:tag="createTagTerm">
                         <template slot="noResult">
                             @T["No tags found"]
                         </template>
